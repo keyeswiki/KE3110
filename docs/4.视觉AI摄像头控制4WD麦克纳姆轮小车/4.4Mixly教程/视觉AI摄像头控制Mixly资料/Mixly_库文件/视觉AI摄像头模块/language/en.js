@@ -1,0 +1,40 @@
+'use strict';
+
+goog.require('Blockly.Lang');
+
+Blockly.Lang.En = Blockly.Lang.En || {};
+
+Blockly.Lang.En.TINYVISION_CATEGORY = 'TinyVision';
+Blockly.Lang.En.TINYVISION_INIT = 'initialize TinyVision RX';
+Blockly.Lang.En.TINYVISION_TX = 'TX';
+Blockly.Lang.En.TINYVISION_BAUD = 'baud';
+Blockly.Lang.En.TINYVISION_SET_MODE = 'set TinyVision mode to';
+Blockly.Lang.En.TINYVISION_MODE_FACE = 'face tracking';
+Blockly.Lang.En.TINYVISION_MODE_COLOR = 'color recognition';
+Blockly.Lang.En.TINYVISION_MODE_QR = 'QR code';
+Blockly.Lang.En.TINYVISION_MODE_CARD = 'card recognition';
+Blockly.Lang.En.TINYVISION_READ_SERIAL = 'read TinyVision serial data';
+Blockly.Lang.En.TINYVISION_GET_FACE_COORD = 'get face coordinate';
+Blockly.Lang.En.TINYVISION_IS_FACE_VALID = 'valid face detected';
+Blockly.Lang.En.TINYVISION_GET_COLOR = 'get color result';
+Blockly.Lang.En.TINYVISION_IS_COLOR = 'recognized color is';
+Blockly.Lang.En.TINYVISION_COLOR_RED = 'Red (RED)';
+Blockly.Lang.En.TINYVISION_COLOR_YELLOW = 'Yellow (YELLOW)';
+Blockly.Lang.En.TINYVISION_COLOR_BLUE = 'Blue (BLUE)';
+Blockly.Lang.En.TINYVISION_COLOR_GREEN = 'Green (GREEN)';
+Blockly.Lang.En.TINYVISION_GET_QRCODE = 'get QR code result';
+Blockly.Lang.En.TINYVISION_GET_CARD = 'get card result';
+Blockly.Lang.En.TINYVISION_IS_CARD = 'recognized card is';
+Blockly.Lang.En.TINYVISION_CARD_STRAIGHT = 'Straight (STRAIGHT)';
+Blockly.Lang.En.TINYVISION_CARD_UTURN = 'U-turn (UTURN)';
+Blockly.Lang.En.TINYVISION_CARD_LEFT = 'Turn left (LEFT)';
+Blockly.Lang.En.TINYVISION_CARD_RIGHT = 'Turn right (RIGHT)';
+Blockly.Lang.En.TINYVISION_CARD_PARKING = 'Parking (PARKING)';
+Blockly.Lang.En.TINYVISION_TOOLTIP_INIT = 'Connect TinyVision over serial. The AiCam library controls the camera-side baud rate.';
+Blockly.Lang.En.TINYVISION_TOOLTIP_SET_MODE = 'Switch among face, color, QR-code and card-recognition modes.';
+Blockly.Lang.En.TINYVISION_TOOLTIP_READ_SERIAL = 'Call repeatedly in the main loop to read and parse TinyVision data.';
+Blockly.Lang.En.TINYVISION_TOOLTIP_FACE_COORD = 'Return the X or Y coordinate from the latest valid face data.';
+Blockly.Lang.En.TINYVISION_TOOLTIP_FACE_VALID = 'Return the face-valid state stored by the AiCam library.';
+Blockly.Lang.En.TINYVISION_TOOLTIP_COLOR = 'Return the latest color-recognition string.';
+Blockly.Lang.En.TINYVISION_TOOLTIP_QR = 'Return the latest QR-code string.';
+Blockly.Lang.En.TINYVISION_TOOLTIP_CARD = 'Return the latest card-recognition string.';

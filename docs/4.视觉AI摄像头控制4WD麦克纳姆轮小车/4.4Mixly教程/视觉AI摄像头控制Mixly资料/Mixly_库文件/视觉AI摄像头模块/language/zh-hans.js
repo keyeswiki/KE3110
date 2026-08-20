@@ -1,0 +1,40 @@
+'use strict';
+
+goog.require('Blockly.Lang');
+
+Blockly.Lang.ZhHans = Blockly.Lang.ZhHans || {};
+
+Blockly.Lang.ZhHans.TINYVISION_CATEGORY = 'TinyVision';
+Blockly.Lang.ZhHans.TINYVISION_INIT = '初始化 TinyVision RX';
+Blockly.Lang.ZhHans.TINYVISION_TX = 'TX';
+Blockly.Lang.ZhHans.TINYVISION_BAUD = '波特率';
+Blockly.Lang.ZhHans.TINYVISION_SET_MODE = '设置 TinyVision 模式为';
+Blockly.Lang.ZhHans.TINYVISION_MODE_FACE = '人脸跟随';
+Blockly.Lang.ZhHans.TINYVISION_MODE_COLOR = '颜色识别';
+Blockly.Lang.ZhHans.TINYVISION_MODE_QR = '二维码识别';
+Blockly.Lang.ZhHans.TINYVISION_MODE_CARD = '卡片识别';
+Blockly.Lang.ZhHans.TINYVISION_READ_SERIAL = '读取 TinyVision 串口数据';
+Blockly.Lang.ZhHans.TINYVISION_GET_FACE_COORD = '获取人脸坐标';
+Blockly.Lang.ZhHans.TINYVISION_IS_FACE_VALID = '是否检测到有效人脸';
+Blockly.Lang.ZhHans.TINYVISION_GET_COLOR = '获取颜色识别结果';
+Blockly.Lang.ZhHans.TINYVISION_IS_COLOR = '识别到的颜色是';
+Blockly.Lang.ZhHans.TINYVISION_COLOR_RED = '红色（RED）';
+Blockly.Lang.ZhHans.TINYVISION_COLOR_YELLOW = '黄色（YELLOW）';
+Blockly.Lang.ZhHans.TINYVISION_COLOR_BLUE = '蓝色（BLUE）';
+Blockly.Lang.ZhHans.TINYVISION_COLOR_GREEN = '绿色（GREEN）';
+Blockly.Lang.ZhHans.TINYVISION_GET_QRCODE = '获取二维码识别结果';
+Blockly.Lang.ZhHans.TINYVISION_GET_CARD = '获取卡片识别结果';
+Blockly.Lang.ZhHans.TINYVISION_IS_CARD = '识别到的卡片是';
+Blockly.Lang.ZhHans.TINYVISION_CARD_STRAIGHT = '直行（STRAIGHT）';
+Blockly.Lang.ZhHans.TINYVISION_CARD_UTURN = '掉头（UTURN）';
+Blockly.Lang.ZhHans.TINYVISION_CARD_LEFT = '左转（LEFT）';
+Blockly.Lang.ZhHans.TINYVISION_CARD_RIGHT = '右转（RIGHT）';
+Blockly.Lang.ZhHans.TINYVISION_CARD_PARKING = '停车（PARKING）';
+Blockly.Lang.ZhHans.TINYVISION_TOOLTIP_INIT = '通过串口连接 TinyVision。通信波特率由 AiCam 库设置。';
+Blockly.Lang.ZhHans.TINYVISION_TOOLTIP_SET_MODE = '切换人脸、颜色、二维码或卡片识别模式。';
+Blockly.Lang.ZhHans.TINYVISION_TOOLTIP_READ_SERIAL = '在主循环中反复读取并解析 TinyVision 返回的数据。';
+Blockly.Lang.ZhHans.TINYVISION_TOOLTIP_FACE_COORD = '返回最近一次有效人脸数据的 X 或 Y 坐标。';
+Blockly.Lang.ZhHans.TINYVISION_TOOLTIP_FACE_VALID = '返回 AiCam 库记录的人脸有效状态。';
+Blockly.Lang.ZhHans.TINYVISION_TOOLTIP_COLOR = '返回最近一次颜色识别字符串。';
+Blockly.Lang.ZhHans.TINYVISION_TOOLTIP_QR = '返回最近一次二维码识别字符串。';
+Blockly.Lang.ZhHans.TINYVISION_TOOLTIP_CARD = '返回最近一次卡片识别字符串。';

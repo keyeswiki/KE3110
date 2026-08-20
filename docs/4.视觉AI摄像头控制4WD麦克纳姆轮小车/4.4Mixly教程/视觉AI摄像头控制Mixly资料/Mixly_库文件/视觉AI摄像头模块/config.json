@@ -1,0 +1,6 @@
+{
+  "name": "视觉AI摄像头模块",
+  "author": "Converted for Mixly 2.0/3.0",
+  "version": "2.0.7",
+  "description": "TinyVision AI camera blocks for Arduino and ESP32, compatible with Mixly 2.0 and 3.0"
+}

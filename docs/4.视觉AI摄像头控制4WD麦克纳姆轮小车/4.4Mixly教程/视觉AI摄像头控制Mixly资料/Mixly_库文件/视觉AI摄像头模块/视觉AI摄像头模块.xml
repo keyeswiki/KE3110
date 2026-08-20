@@ -1,0 +1,35 @@
+<!--
+Mixly 2.0 / 3.0 dual-compatible graphical library.
+Explicit block gaps are required for stable flyout layout in Mixly 3.0 rc0.
+-->
+<script type="text/javascript" src="./language/zh-hans.js"></script>
+<script type="text/javascript" src="./language/zh-hant.js"></script>
+<script type="text/javascript" src="./language/en.js"></script>
+<script type="text/javascript" src="./block/tinyvision.js"></script>
+<script type="text/javascript" src="./generator/tinyvision.js"></script>
+
+<category id="tinyvision" name="视觉AI摄像头" colour="#4285F4">
+    <block type="tinyvision_init" gap="36">
+        <field name="RX">2</field>
+        <field name="TX">3</field>
+        <field name="BAUD">9600</field>
+    </block>
+    <block type="tinyvision_set_mode" gap="36">
+        <field name="MODE">face</field>
+    </block>
+    <block type="tinyvision_read_serial" gap="36"></block>
+    <sep gap="48"></sep>
+    <block type="tinyvision_get_face_coord" gap="36">
+        <field name="COORD">X</field>
+    </block>
+    <block type="tinyvision_is_face_valid" gap="36"></block>
+    <block type="tinyvision_get_color" gap="36"></block>
+    <block type="tinyvision_is_color" gap="36">
+        <field name="COLOR">RED</field>
+    </block>
+    <block type="tinyvision_get_qrcode" gap="36"></block>
+    <block type="tinyvision_get_card" gap="36"></block>
+    <block type="tinyvision_is_card" gap="36">
+        <field name="CARD">STRAIGHT</field>
+    </block>
+</category>

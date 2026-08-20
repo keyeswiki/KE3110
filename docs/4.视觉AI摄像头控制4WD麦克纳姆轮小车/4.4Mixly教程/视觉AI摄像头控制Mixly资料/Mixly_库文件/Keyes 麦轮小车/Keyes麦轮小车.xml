@@ -1,0 +1,161 @@
+<!--
+type="company"
+block="block/Keyes.js"
+generator="generator/Keyes.js"
+language="language/Keyes/"
+lib="libraries"
+hardware="hardware/arduino"
+media="media/keyesAll"
+-->
+
+<!-- 载入语言文件 -->
+<script type="text/javascript" src="./language/zh-hans.js"></script>
+<script type="text/javascript" src="./language/zh-hant.js"></script>
+<script type="text/javascript" src="./language/en.js"></script>
+<!-- 载入图形块外观定义文件 -->
+<script type="text/javascript" src="./block/Keyes.js"></script>
+<!-- 载入图形块代码生成定义文件 -->
+<script type="text/javascript" src="./generator/Keyes.js"></script>
+
+<category id="keyes_mecanum" name="麦轮小车" colour="20">
+
+    <!--  LED  -->
+    <block type="Mecanum_led"></block>
+
+    <!--  运动控制  -->
+    <block type="Mecanum_robot"></block>
+
+    <!--  超声波  -->
+    <block type="ks4wd_sr04"></block>
+
+    <!--  舵机  -->
+    <block type="ks4wd_servo2">
+      <value name="angle">
+        <shadow type="math_number">
+          <field name="NUM">90</field>
+        </shadow>
+      </value>
+    </block>
+
+    <!--  RGB 初始化  -->
+    <block type="keyes_car_MAX_rgb_init">
+      <value name="PIN">
+        <shadow type="math_number">
+          <field name="NUM">6</field>
+        </shadow>
+      </value>
+      <value name="LEDCOUNT">
+        <shadow type="math_number">
+          <field name="NUM">4</field>
+        </shadow>
+      </value>
+    </block>
+
+    <!--  RGB 亮度  -->
+    <block type="keyes_car_MAX_rgb_brightness">
+      <value name="PIN">
+        <shadow type="math_number">
+          <field name="NUM">6</field>
+        </shadow>
+      </value>
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">50</field>
+        </shadow>
+      </value>
+    </block>
+
+    <!--  RGB 单点 RGB 值  -->
+    <block type="keyes_car_MAX_rgb">
+      <value name="PIN">
+        <shadow type="math_number">
+          <field name="NUM">6</field>
+        </shadow>
+      </value>
+      <value name="_LED_">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="RVALUE">
+        <shadow type="math_number">
+          <field name="NUM">50</field>
+        </shadow>
+      </value>
+      <value name="GVALUE">
+        <shadow type="math_number">
+          <field name="NUM">50</field>
+        </shadow>
+      </value>
+      <value name="BVALUE">
+        <shadow type="math_number">
+          <field name="NUM">50</field>
+        </shadow>
+      </value>
+    </block>
+
+    <!--  RGB 选色  -->
+    <block type="keyes_car_MAX_rgb2">
+      <value name="PIN">
+        <shadow type="math_number">
+          <field name="NUM">6</field>
+        </shadow>
+      </value>
+      <value name="_LED_">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+
+    <!--  RGB 七彩变换  -->
+    <block type="keyes_car_MAX_rgb3">
+      <value name="PIN">
+        <shadow type="math_number">
+          <field name="NUM">6</field>
+        </shadow>
+      </value>
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">50</field>
+        </shadow>
+      </value>
+      <value name="WAIT">
+        <shadow type="math_number">
+          <field name="NUM">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <!--  RGB 七彩循环  -->
+    <block type="keyes_car_MAX_rgb4">
+      <value name="PIN">
+        <shadow type="math_number">
+          <field name="NUM">6</field>
+        </shadow>
+      </value>
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">50</field>
+        </shadow>
+      </value>
+      <value name="WAIT">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+
+    <!--  循迹传感器  -->
+    <block type="ks4wd_track"></block>
+
+    <!--  红外接收  -->
+    <block type="ks4wd_ir_r"></block>
+
+    <!--  蓝牙接收  -->
+    <block type="ks4wd_bluetooth"></block>
+
+    <!--  蓝牙读取字符串  -->
+    <block type="keyes_serial_readstr_until"></block>
+
+</category>
