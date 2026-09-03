@@ -13,7 +13,7 @@ const int LED_COUNT = 4; // 新像素数
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-   Serial.begin(115200); // 设置波特率为115200
+   Serial.begin(9600); // 设置波特率为9600
    aiCam.begin(); // 启动视觉AI摄像头
    aiCam.setAiCamMode("color"); // 设置视觉AI摄像头识别模式为颜色识别
 

@@ -25,16 +25,18 @@
     register('tinyvision_init', function (block) {
         var rx = safePin(block.getFieldValue('RX'), '2');
         var tx = safePin(block.getFieldValue('TX'), '3');
-        var baud = safeChoice(block.getFieldValue('BAUD'), ['9600', '57600', '115200'], '9600');
+        var baud = '9600';
 
-        Arduino.definitions_['include_AiCam'] = '#include <AiCam.h>';
-        Arduino.definitions_['tinyvision_instance'] ='AiCam aiCam(' + rx + ', ' + tx + ');';
+        // Mixly 3.0 rc0 会忽略 includes_；头文件必须进入 definitions_ 才会实际输出。
+        Arduino.definitions_.tinyvision_library = '#include <AiCam.h>';
+        Arduino.definitions_.tinyvision_instance = 'AiCam aiCam(' + rx + ', ' + tx + ');';
+        Arduino.setups_.tinyvision_usb_serial = 'Serial.begin(' + baud + ');\n';
         Arduino.setups_.tinyvision_begin = 'aiCam.begin(' + baud + ');\n';
         return '';
     });
 
     register('tinyvision_set_mode', function (block) {
-        var mode = safeChoice(block.getFieldValue('MODE'), ['face', 'color', 'qr', 'card'], 'face');
+        var mode = safeChoice(block.getFieldValue('MODE'), ['face', 'color', 'qr', 'card', 'line'], 'face');
         return 'aiCam.setAiCamMode("' + mode + '");\n';
     });
 
@@ -64,6 +66,11 @@
         return ['aiCam.getQrCode()', Arduino.ORDER_ATOMIC];
     });
 
+    register('tinyvision_is_qrcode_content', function (block) {
+        var content = safeChoice(block.getFieldValue('QRCODE_CONTENT'), ['red', 'blue', 'green', 'yellow', 'black', 'white'], 'red');
+        return ['(String(aiCam.getQrCode()) == "' + content + '")', Arduino.ORDER_ATOMIC];
+    });
+
     register('tinyvision_get_card', function () {
         return ['aiCam.getCard()', Arduino.ORDER_ATOMIC];
     });
@@ -71,5 +78,10 @@
     register('tinyvision_is_card', function (block) {
         var card = safeChoice(block.getFieldValue('CARD'), ['STRAIGHT', 'UTURN', 'LEFT', 'RIGHT', 'PARKING'], 'STRAIGHT');
         return ['(String(aiCam.getCard()) == "' + card + '")', Arduino.ORDER_ATOMIC];
+    });
+
+    register('tinyvision_get_line_value', function (block) {
+        var value = safeChoice(block.getFieldValue('VALUE'), ['Offset', 'Angle', 'Valid'], 'Offset');
+        return ['aiCam.getLine' + value + '()', Arduino.ORDER_ATOMIC];
     });
 }());

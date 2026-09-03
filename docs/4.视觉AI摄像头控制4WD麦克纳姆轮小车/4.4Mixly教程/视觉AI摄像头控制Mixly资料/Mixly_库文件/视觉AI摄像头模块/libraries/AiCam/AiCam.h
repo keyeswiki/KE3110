@@ -32,6 +32,9 @@ struct EspData {
   bool qrValid = false;
   String card;
   bool cardValid = false;
+  int lineOffset = 0;
+  int lineAngle = 0;
+  int lineValid = 0;
 };
 
 class AiCam {
@@ -51,6 +54,9 @@ public:
   String getQrCode();
   String getCard();
   bool isFaceValid();
+  int getLineOffset();
+  int getLineAngle();
+  int getLineValid();
 
 private:
   uint8_t _rxPin;

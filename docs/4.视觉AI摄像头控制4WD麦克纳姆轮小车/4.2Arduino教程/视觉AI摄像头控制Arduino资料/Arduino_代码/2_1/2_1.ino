@@ -13,7 +13,7 @@ Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 AiCam aiCam(A4, A5); // 定义引脚: TX接A4, RX接A5
 
 void setup() {
-   Serial.begin(115200); // 设置波特率
+   Serial.begin(9600); // 设置波特率9600
    aiCam.begin(); // 启动视觉AI摄像头
    
    aiCam.setAiCamMode("qr"); // 设置视觉AI摄像头为二维码识别

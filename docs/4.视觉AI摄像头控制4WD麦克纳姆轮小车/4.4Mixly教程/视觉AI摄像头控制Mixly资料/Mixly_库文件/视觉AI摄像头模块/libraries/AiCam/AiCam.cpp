@@ -49,6 +49,8 @@ void AiCam::setAiCamMode(String cmd) {
     sendToEsp(F("MODE:QR"));
   } else if (cmd == "card") {
     sendToEsp(F("MODE:CARD"));
+  } else if (cmd == "line") {
+    sendToEsp(F("MODE:LINE"));
   }
 }
 
@@ -67,11 +69,7 @@ void AiCam::updateEspData(const String &mode, const String &data) {
     if (comma != -1) {
       _data.faceX = data.substring(0, comma).toInt();
       _data.faceY = data.substring(comma + 1).toInt();
-      if (_data.faceX != 0 && _data.faceY != 0) {
-        _data.faceValid = true;
-      } else {
-        _data.faceValid = false;
-      }
+      _data.faceValid = true;
     }
   } else if (mode.equalsIgnoreCase("COLOR")) {
     _data.color = data;
@@ -82,6 +80,14 @@ void AiCam::updateEspData(const String &mode, const String &data) {
   } else if (mode.equalsIgnoreCase("CARD")) {
     _data.card = data;
     _data.cardValid = true;
+  } else if (mode.equalsIgnoreCase("LINE")) {
+    int firstComma = data.indexOf(',');
+    int secondComma = data.indexOf(',', firstComma + 1);
+    if (firstComma != -1 && secondComma != -1) {
+      _data.lineOffset = data.substring(0, firstComma).toInt();
+      _data.lineAngle = data.substring(firstComma + 1, secondComma).toInt();
+      _data.lineValid = data.substring(secondComma + 1).toInt();
+    }
   }
 }
 
@@ -102,8 +108,11 @@ void AiCam::readEspSerial() {
         }
         _espLine = "";
       }
-    } else {
+    } else if (_espLine.length() < 128) {
       _espLine += c;
+    } else {
+      // 丢弃异常长的未换行帧，避免持续占用动态 String 内存。
+      _espLine = "";
     }
   }
 }
@@ -116,8 +125,10 @@ void AiCam::readUsbSerial() {
         setAiCamMode(_usbLine);
         _usbLine = "";
       }
-    } else {
+    } else if (_usbLine.length() < 128) {
       _usbLine += c;
+    } else {
+      _usbLine = "";
     }
   }
 }
@@ -128,3 +139,6 @@ String AiCam::getColor() { return _data.color; }
 String AiCam::getQrCode() { return _data.qr; }
 String AiCam::getCard() { return _data.card; }
 bool AiCam::isFaceValid() { return _data.faceValid; }
+int AiCam::getLineOffset() { return _data.lineOffset; }
+int AiCam::getLineAngle() { return _data.lineAngle; }
+int AiCam::getLineValid() { return _data.lineValid; }

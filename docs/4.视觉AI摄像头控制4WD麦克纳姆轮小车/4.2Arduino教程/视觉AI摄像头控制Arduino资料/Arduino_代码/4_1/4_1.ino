@@ -10,7 +10,7 @@ unsigned long runTime = 0; // 记录电机运行截止时间
 bool isRun = false;       // 电机运行标记
 
 void setup() {
-   Serial.begin(115200); // 设置波特率为115200
+   Serial.begin(9600); // 设置波特率为9600
    aiCam.begin(); // 启动视觉AI摄像头
    mecanumCar.Init();  // 初始化电机与七彩灯驱动
 

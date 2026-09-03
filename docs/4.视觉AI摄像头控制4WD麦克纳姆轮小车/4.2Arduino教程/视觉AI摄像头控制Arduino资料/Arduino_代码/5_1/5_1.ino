@@ -15,11 +15,11 @@ const int LED_COUNT = 4; // 新像素数
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-   Serial.begin(115200); // 设置波特率为115200
+   Serial.begin(9600); // 设置波特率为9600
    aiCam.begin(); // 启动视觉AI摄像头
    mecanumCar.Init();  // 初始化电机与七彩灯驱动
 
-   aiCam.setAiCamMode("card"); // 设置视觉AI摄像头识别模式为图标卡片识别
+   aiCam.setAiCamMode("card"); // 设置视觉AI摄像头识别模式为交通卡片识别
    
    #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
      clock_prescale_set(clock_div_1);
@@ -32,19 +32,19 @@ void setup() {
 
 void loop() {
    aiCam.readEspSerial(); // 读取视觉AI摄像头串口数据
-   if ((String(aiCam.getCard()) == "STRAIGHT")) { // 视觉AI摄像头识别直行图标卡片
+   if ((String(aiCam.getCard()) == "STRAIGHT")) { // 视觉AI摄像头识别直行交通卡片
      colorWipe(strip.Color(255, 0, 0), 50);  // 亮红色灯
      mecanumCar.Advance(); // 小车直行
-  } else if ((String(aiCam.getCard()) == "UTURN")) { // 视觉AI摄像头识别掉头图标卡片
+  } else if ((String(aiCam.getCard()) == "UTURN")) { // 视觉AI摄像头识别掉头交通卡片
      colorWipe(strip.Color(0, 255, 0), 50);  // 亮绿色灯
      mecanumCar.Back(); // 小车后退
-  } else if ((String(aiCam.getCard()) == "LEFT")) { // 视觉AI摄像头识别左转图标卡片
+  } else if ((String(aiCam.getCard()) == "LEFT")) { // 视觉AI摄像头识别左转交通卡片
      colorWipe(strip.Color(0, 0, 255), 50);  // 亮蓝色灯
      mecanumCar.Turn_Left(); // 小车左转
-  } else if ((String(aiCam.getCard()) == "RIGHT")) { // 视觉AI摄像头识别右转图标卡片
+  } else if ((String(aiCam.getCard()) == "RIGHT")) { // 视觉AI摄像头识别右转交通卡片
      colorWipe(strip.Color(255, 255, 0), 50); // 亮黄色灯
      mecanumCar.Turn_Right(); // 小车右转
-  } else { // 视觉AI摄像头未识别图标卡片
+  } else { // 视觉AI摄像头未识别交通卡片
      colorWipe(strip.Color(0, 0, 0), 50); // 不亮
      mecanumCar.Stop(); // 小车停止
   }

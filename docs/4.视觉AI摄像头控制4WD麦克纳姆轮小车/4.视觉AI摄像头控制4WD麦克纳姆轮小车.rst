@@ -32,7 +32,7 @@
 .. toctree::
     :maxdepth: 1
 
-    4.3Kidsblock教程/0.视觉AI摄像头Arduino资料下载
+    4.3Kidsblock教程/0.视觉AI摄像头Kidsblock资料下载
     4.3Kidsblock教程/1.人脸检测
     4.3Kidsblock教程/2.二维码识别
     4.3Kidsblock教程/3.颜色识别
@@ -46,7 +46,7 @@
 .. toctree::
     :maxdepth: 1
 
-    4.4Mixly教程/0.视觉AI摄像头Arduino资料下载
+    4.4Mixly教程/0.视觉AI摄像头Mixly资料下载
     4.4Mixly教程/1.人脸检测
     4.4Mixly教程/2.二维码识别
     4.4Mixly教程/3.颜色识别
