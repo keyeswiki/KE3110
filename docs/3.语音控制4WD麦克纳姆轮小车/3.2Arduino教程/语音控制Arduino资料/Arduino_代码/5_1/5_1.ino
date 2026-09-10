@@ -5,12 +5,12 @@
 const int TrigPin = 12; // Trig接D12
 const int EchoPin = 13; // Echo接D13
 
-/*******智能语音识别模块接口*****/
+/*******语音识别模块接口*****/
 const int RX_PIN = A5; // 引脚 A5 为 RX
 const int TX_PIN = A4; // 引脚 A4 为 TX
 SoftwareSerial mySerial(RX_PIN, TX_PIN); // 定义软件串口引脚（RX, TX）
 
-// 定义变量用于存储从语音模块接收到的控制码
+// 定义变量用于存储从语音识别模块接收到的控制码
 volatile int Voice_Control = 0;  // 初始化为0，确保首次判断时不触发任何指令
 // 定义变量用于存储从超声波传感器检测到的距离
 volatile int distance = 0;
@@ -183,7 +183,7 @@ void setup(){
 
 void loop(){
    distance = getDistance(); // 超声波传感器读取距离
-   if (mySerial.available() > 0) {  // 接收语音控制模块的外设数据(命令参数)
+   if (mySerial.available() > 0) {  // 接收语音识别模块的外设数据(命令参数)
      Voice_Control = mySerial.read(); // 将接收到的外设数据(命令参数)进行赋值 
      Serial.println(Voice_Control); // 串口打印收到的外设数据(命令参数)
    }  

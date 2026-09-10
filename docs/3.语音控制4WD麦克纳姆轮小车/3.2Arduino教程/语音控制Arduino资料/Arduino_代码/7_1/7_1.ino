@@ -7,7 +7,7 @@
  #include <avr/power.h> // 需要 16 MHz Adafruit Trinket
 #endif
 
-/*******智能语音识别模块接口*****/
+/*******语音识别模块接口*****/
 const int RX_PIN = A5; // 引脚 A5 为 RX
 const int TX_PIN = A4; // 引脚 A4 为 TX
 SoftwareSerial mySerial(RX_PIN, TX_PIN); // 定义软件串口引脚（RX, TX）
@@ -19,8 +19,8 @@ mecanumCar mecanumCar(3, 2);  //sda-->D3,scl-->D2
 const int SERVO_PIN = 9;  // 舵机信号引脚
 Servo myservo;    // 定义一个舵机类实例
 
-/*******4颗WS2812全彩灯珠接口与灯珠数量*****/
-const int LED_PIN = 10;  // SK6812 RGB模块引脚
+/*******4颗WS2812灯珠接口与灯珠数量*****/
+const int LED_PIN = 10;  // 4颗WS2812灯珠引脚
 const int LED_COUNT = 4; // 新像素数
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
@@ -33,7 +33,7 @@ const int SensorLeft = A0;   // 左传感器输入引脚
 const int SensorMiddle = A1; // 中间传感器输入引脚
 const int SensorRight = A2;  // 右侧传感器输入引脚
 
-// 定义变量用于存储从语音模块接收到的控制码
+// 定义变量用于存储从语音识别模块接收到的控制码
 volatile int Voice_Control = 0;  // 初始化为0，确保首次判断时不触发任何指令
 
 void setup() {
@@ -44,7 +44,7 @@ void setup() {
   pinMode(SensorLeft, INPUT); // 设置左边循迹传感器的接口为输入模式
   pinMode(SensorMiddle, INPUT); // 设置中间循迹传感器的接口为输入模式
   pinMode(SensorRight, INPUT); // 设置右边循迹传感器的接口为输入模式
-  myservo.attach(SERVO_PIN);  // 将D9上的舵机附加到舵机对象上
+  myservo.attach(SERVO_PIN);  // 将D9上的舵机添加到舵机对象上
   myservo.write(90); // 设定舵机初始角度为90°
   delay(500);
   #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
@@ -58,7 +58,7 @@ void setup() {
 }
 
 void loop() {
-    if (mySerial.available()) { // 检查软串口是否有来自语音模块的数据可读
+    if (mySerial.available()) { // 检查软串口是否有来自语音识别模块的数据可读
     Voice_Control = mySerial.read(); // 从软串口读取多个字节的数据
     Serial.println(Voice_Control); // 将接收到的数据通过硬件串口输出到串口监视器，便于调试   
     }
@@ -106,7 +106,7 @@ void colorWipe(uint32_t color, int wait) {
   }
 }
 
-// 彩虹增强剧院帐篷。在帧之间传递延迟时间（毫秒）。
+// 彩虹增强的跑马灯函数。在帧之间传递延迟时间（毫秒）。
 void theaterChaseRainbow(int wait) {
   int firstPixelHue = 0;     // 第一个像素以红色开始（色调0）
   for(int a=0; a<30; a++) {  // 重复30次...
@@ -163,7 +163,7 @@ void Line_Tracking(void) {  //循黑线
   }
 }
 
-/*********************超声波跟随*******************************/
+/*********************超声波跟随模式****************************/
 void ult_following(void){
   while (1){
     int distance = get_distance();  // 获取距离保存在distance变量
@@ -190,7 +190,7 @@ void ult_following(void){
   } 
 }
 
-/*********************超声波避障*******************************/
+/*********************超声波避障模式****************************/
 void ult_avoiding(void){
   int distance_M, distance_L, distance_R;
   while (1){

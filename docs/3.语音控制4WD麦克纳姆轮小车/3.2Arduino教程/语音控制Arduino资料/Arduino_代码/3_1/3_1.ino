@@ -5,17 +5,17 @@
  #include <avr/power.h> // 需要 16 MHz Adafruit 固件
 #endif
 
-/*******智能语音识别模块接口*****/
+/*******语音识别模块接口********/
 const int RX_PIN = A5; // 引脚 A5 为 RX
 const int TX_PIN = A4; // 引脚 A4 为 TX
 SoftwareSerial mySerial(RX_PIN, TX_PIN); // 定义软件串口引脚（RX, TX）
 
-/*******4颗WS2812全彩灯珠接口与灯珠数量*****/
-const int LED_PIN = 10;  // 4颗WS2812全彩灯珠引脚
+/*******4颗WS2812灯珠接口与灯珠数量*****/
+const int LED_PIN = 10;  // 4颗WS2812灯珠引脚
 const int LED_COUNT = 4; // 新像素数
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-// 定义变量用于存储从语音模块接收到的控制码
+// 定义变量用于存储从语音识别模块接收到的控制码
 volatile int Voice_Control = 0;  // 初始化为0，确保首次判断时不触发任何指令
 
 void setup() {
@@ -31,7 +31,7 @@ void setup() {
 }
 
 void loop() {
-   if (mySerial.available()) { // 检查软串口是否有来自语音模块的数据可读
+   if (mySerial.available()) { // 检查软串口是否有来自语音识别模块的数据可读
       Voice_Control = mySerial.read(); // 从软串口读取多个字节的数据
       Serial.println(Voice_Control); // 将接收到的数据通过硬件串口输出到串口监视器，便于调试   
    }
@@ -58,7 +58,7 @@ void colorWipe(uint32_t color, int wait) {
   }
 }
 
-// 彩虹增强剧院帐篷。在帧之间传递延迟时间（毫秒）。
+// 彩虹增强的跑马灯函数。在帧之间传递延迟时间（毫秒）。
 void theaterChaseRainbow(int wait) {
   int firstPixelHue = 0;     // 第一个像素以红色开始（色调0）
   for(int a=0; a<30; a++) {  // 重复30次...
