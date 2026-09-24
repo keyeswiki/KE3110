@@ -1,6 +1,6 @@
 .. toctree::
    :maxdepth: 3
-   :caption: KE3110 视觉AI摄像头控制与语音控制扩展包
+   :caption: KE3110 Keyes Arduino 4WD 麦克纳姆轮小车的视觉AI摄像头控制+语音控制扩展包
 
 
    docs/1.产品介绍
