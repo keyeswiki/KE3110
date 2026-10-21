@@ -67,7 +67,7 @@
     Blockly.Blocks.tinyvision_is_face_valid = {
         init: function () {
             this.appendDummyInput().appendField(msg('TINYVISION_IS_FACE_VALID', '是否检测到有效人脸'));
-            this.setOutput(true, Boolean);
+            this.setOutput(true, 'Boolean');
             this.setColour(COLOUR);
             this.setTooltip(msg('TINYVISION_TOOLTIP_FACE_VALID', '返回人脸有效状态。'));
         }
@@ -92,7 +92,7 @@
                     [msg('TINYVISION_COLOR_BLUE', '蓝色'), 'BLUE'],
                     [msg('TINYVISION_COLOR_GREEN', '绿色'), 'GREEN']
                 ]), 'COLOR');
-            this.setOutput(true, Boolean);
+            this.setOutput(true, 'Boolean');
             this.setColour(COLOUR);
             this.setTooltip(msg('TINYVISION_TOOLTIP_COLOR', '比较颜色识别结果。'));
         }
@@ -119,7 +119,7 @@
                     [msg('TINYVISION_QRCODE_CONTENT_BLACK', '黑色（black）'), 'black'],
                     [msg('TINYVISION_QRCODE_CONTENT_WHITE', '白色（white）'), 'white']
                 ]), 'QRCODE_CONTENT');
-            this.setOutput(true, Boolean);
+            this.setOutput(true, 'Boolean');
             this.setColour(COLOUR);
             this.setTooltip(msg('TINYVISION_TOOLTIP_QR_CONTENT', '比较最近一次二维码识别字符串。'));
         }
@@ -145,7 +145,7 @@
                     [msg('TINYVISION_CARD_RIGHT', '右转'), 'RIGHT'],
                     [msg('TINYVISION_CARD_PARKING', '停车'), 'PARKING']
                 ]), 'CARD');
-            this.setOutput(true, Boolean);
+            this.setOutput(true, 'Boolean');
             this.setColour(COLOUR);
             this.setTooltip(msg('TINYVISION_TOOLTIP_CARD', '比较卡片识别结果。'));
         }
